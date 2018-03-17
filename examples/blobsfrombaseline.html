@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Blobs from Baseline</title>
+
+    <style>
+        canvas {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+<script type="module">
+    import Filters from '../src/canvas/filters.js';
+    import Blobs from '../src/canvas/blobs.js';
+
+    var imagereducefactor = 8;
+    var canvas = { baseline: document.createElement('canvas'), newframe: document.createElement('canvas'), result: document.createElement('canvas')};
+    var ctx = { baseline: canvas.baseline.getContext('2d'), newframe: canvas.newframe.getContext('2d'), result: canvas.result.getContext('2d') };
+    var imgs = { baseline: new Image(), newframe: new Image(), result: null };
+    imgs.baseline.src = 'images/highway1.jpg';
+    imgs.baseline.onload = function(e) {
+        canvas.baseline.height = this.naturalHeight / imagereducefactor;
+        canvas.baseline.width = this.naturalWidth / imagereducefactor;
+        ctx.baseline.drawImage(this, 0, 0, this.naturalWidth / imagereducefactor, this.naturalHeight / imagereducefactor);
+
+        imgs.newframe.src = 'images/highway2.jpg';
+        imgs.newframe.onload = function(e) {
+            canvas.newframe.height = this.naturalHeight / imagereducefactor;
+            canvas.newframe.width = this.naturalWidth / imagereducefactor;
+            canvas.result.height = this.naturalHeight / imagereducefactor;
+            canvas.result.width = this.naturalWidth / imagereducefactor;
+            ctx.newframe.drawImage(this, 0, 0, this.naturalWidth / imagereducefactor, this.naturalHeight / imagereducefactor);
+
+            var baseline = ctx.baseline.getImageData(0, 0, this.naturalWidth / imagereducefactor, this.naturalHeight / imagereducefactor);
+            var newframe = ctx.newframe.getImageData(0, 0, this.naturalWidth / imagereducefactor, this.naturalHeight / imagereducefactor);
+
+            var diff = Filters.toDiff(baseline, newframe, 25);
+            var blobs = Blobs.findBlobs(diff, {paint: true});
+            ctx.result.putImageData( blobs.image, 0, 0, 0, 0, this.naturalWidth / imagereducefactor, this.naturalHeight / imagereducefactor );
+        }
+    };
+    document.body.appendChild(canvas.baseline);
+    document.body.appendChild(canvas.newframe);
+    document.body.appendChild(canvas.result);
+</script>
+
+</body>
+</html>

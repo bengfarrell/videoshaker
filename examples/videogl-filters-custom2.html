@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+        <title>Demo: Custom WebGL Filter</title>
+        <script type="module" src="../ccwc-glvideo.js"></script>
+
+        <style>
+            ccwc-glvideo {
+                width: 640px;
+                height: 480px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Demo: Apply Custom WebGL Filter</h2>
+        <p>
+            Apply Custom WebGL Filter from the extras playground set
+        </p>
+        <ccwc-glvideo
+                useCamera
+                useCanvasForDisplay
+                canvasRefreshInterval="10"
+                useWebGL='{"filter": "sobel_inverted"}'>
+        </ccwc-glvideo>
+
+        <script type="module">
+            import Filters from '../node_modules/ccwc-image-utils/src/webgl-extra/extra-shaders.js';
+            document.querySelector('ccwc-glvideo').webglProperties.filterLibrary = Filters;
+        </script>
+    </body>
+</html>

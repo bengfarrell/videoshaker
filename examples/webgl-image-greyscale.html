@@ -1,0 +1,30 @@
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>WebGL Greyscale Filter</title>
+    </head>
+    <body>
+    <script type="module">
+        import Filters from '../src/webgl/filters.js';
+
+        var canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+
+        var img = new Image();
+        img.src = 'images/food.jpg';
+        img.onload = function() {
+            canvas.height = img.height;
+            canvas.width = img.width;
+            var starttime = new Date().getTime();
+            var glProps = Filters.createRenderObject({
+                filter: Filters.createFilterFromName('greyscale'),
+                gl: canvas.getContext('webgl'),
+                textures: [{name: 'image', texture: img}],
+                autorender: true
+            });
+            var endtime = new Date().getTime();
+            console.log((endtime-starttime)/1000 + ' seconds');
+        };
+    </script>
+    </body>
+</html>

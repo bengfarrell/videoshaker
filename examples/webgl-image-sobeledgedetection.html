@@ -1,0 +1,27 @@
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>WebGL Sobel Edge Detection Filter</title>
+    </head>
+    <body>
+    <script type="module">
+        import Filters from '../src/webgl/filters.js';
+
+        var canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+
+        var img = new Image();
+        img.src = 'images/food.jpg';
+        img.onload = function(e) {
+            canvas.height = img.height;
+            canvas.width = img.width;
+            var glProps = Filters.createRenderObject({
+                filter: Filters.createFilterFromName('sobel_edge_detection'),
+                gl: canvas.getContext('webgl'),
+                textures: [{name: 'image', texture: img}],
+                autorender: true
+            });
+        };
+    </script>
+    </body>
+</html>
