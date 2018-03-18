@@ -42,8 +42,8 @@
     </ccwc-glvideo>
 
     <script type="module">
-        import Constants from '../node_modules/ccwc-image-utils/src/webgl/constants.js';
-        import Shaders from '../node_modules/ccwc-image-utils/src/webgl/shaders.js';
+        import Constants from '../src/webgl/constants.js';
+        import Shaders from '../src/webgl/shaders.js';
 
         document.querySelector('input').addEventListener('input', onSliderChange);
 
@@ -54,7 +54,7 @@
         video.addEventListener('webglsetup', function(event) {
             event.detail.properties.renderobj.uniforms.add('u_weight', Constants.uniforms.UNIFORM2f, [0.5, 0.5]);
             var img = new Image();
-            img.src = 'images/food.jpg';
+            img.src = './images/food.jpg';
             event.detail.properties.renderobj.textures.add('food', img);
         });
 

@@ -28,8 +28,8 @@
 <input type="range" value="90" min="1" max="100" step="1" id="tolerance">
 
 <script type="module">
-    import Filters from '../node_modules/ccwc-image-utils/src/canvas/filters.js';
-    import Blobs from '../node_modules/ccwc-image-utils/src/canvas/blobs.js';
+    import Filters from '../src/canvas/filters.js';
+    import Blobs from '../src/canvas/blobs.js';
 
     document.querySelector('button').addEventListener('click', capture);
     document.querySelector('input').addEventListener('input', onSliderChange);

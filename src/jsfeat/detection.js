@@ -138,7 +138,7 @@ export default class {
     constructor(ctx) {
         this.canvasContext = ctx;
         this.opticalFlowOptions = Detection.DEFAULT_OPTICAL_FLOW_OPTIONS;
-        this.featureDetectOptions = Detection.DEFAULT_YAPE06_DETECTOR_OPTIONS;
+        this.featureDetectOptions = Detection.DEFAULT_FAST_DETECTOR_OPTIONS;
         this.motionEstimatorOptions = Detection.DEFAULT_MOTION_ESTIMATION_OPTIONS;
 
         this._motionFrames = [];

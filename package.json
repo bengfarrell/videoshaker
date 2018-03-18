@@ -1,6 +1,6 @@
 {
-  "name": "ccwc-image-utils",
-  "version": "0.6.0",
+  "name": "videoshaker",
+  "version": "0.1.0",
   "devDependencies": {
     "gl2js": "^0.1.1"
   },
@@ -10,6 +10,6 @@
   "scripts": {
     "wrap-jsfeat": "node ./bin/wraplib.js node_modules/jsfeat/build/jsfeat.js jsfeat > ./src/jsfeat/jsfeat.wrapper.js",
     "gl2js-shaders": "node ./node_modules/gl2js/index.js ./src/webgl/shaders/*.glsl module=true output=./src/webgl/shaders.js",
-    "gl2js-extrashaders": "node ./node_modules/gl2js/index.js ./src/webgl-extra/extra-shaders/*.glsl module=true output=./src/webgl-extra/extra-shaders/extra-shaders.js"
+    "gl2js-extrashaders": "node ./node_modules/gl2js/index.js ./src/webgl-extra/extra-shaders/*.glsl module=true output=./src/webgl-extra/extra-shaders.js"
   }
 }

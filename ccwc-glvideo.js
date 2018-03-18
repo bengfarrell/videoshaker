@@ -1,6 +1,6 @@
 import CCWCVideo from './ccwc-video.js';
-import Filters from './node_modules/ccwc-image-utils/src/webgl/filters.js';
-import Shaders from './node_modules/ccwc-image-utils/src/webgl/shaders.js';
+import Filters from './src/webgl/filters.js';
+import Shaders from './src/webgl/shaders.js';
 
 export default class CCWCGLVideo extends CCWCVideo {
     static get ON_WEBGL_SETUP() { return 'webglsetup'; }
