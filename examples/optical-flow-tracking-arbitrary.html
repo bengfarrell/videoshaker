@@ -3,10 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>Demo: Optical Flow Tracking</title>
-    <script type="module" src="../ccwc-video.js"></script>
+    <script type="module" src="../vshkr-video.js"></script>
 
     <style>
-        ccwc-video {
+        vshkr-video {
             width: 640px;
             height: 480px;
         }
@@ -17,7 +17,7 @@
 <h2>Optical Flow Tracking for Arbitrary Points</h2>
 <p>
 </p>
-<ccwc-video useCamera frameDataMode="imagedata" useCanvasForDisplay canvasRefreshInterval="50"></ccwc-video>
+<vshkr-video useCamera frameDataMode="imagedata" useCanvasForDisplay canvasRefreshInterval="50"></vshkr-video>
 <br />
 <button>Capture Baseline</button>
 
@@ -33,7 +33,7 @@
     let detect = new Detection();
     detect.motionEstimatorOptions.autoFlowPoints = true;
 
-    document.querySelector('ccwc-video').addEventListener('frameupdate', function(event) {
+    document.querySelector('vshkr-video').addEventListener('frameupdate', function(event) {
         let data = event.detail;
         if (!detect.context) { detect.context = data.canvascontext; }
         let points = detect.updateFlow(data.framedata, 0, 0, 0, 0, data.width, data.height);

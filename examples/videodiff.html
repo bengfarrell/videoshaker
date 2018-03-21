@@ -3,22 +3,22 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Video Camera Demo</title>
-    <script type="module" src="../ccwc-video.js"></script>
+    <script type="module" src="../vshkr-video.js"></script>
 
     <style>
-        ccwc-video {
+        vshkr-video {
             width: 640px;
             height: 480px;
         }
     </style>
 </head>
 
-<ccwc-video
+<vshkr-video
         frameDataMode="imagedata"
         canvasRefreshInterval="50"
         src="SampleVideo_360x240_1mb.mp4"
         useCanvasForDisplay>
-</ccwc-video>
+</vshkr-video>
 
 <br />
 <button>Video Diff</button>
@@ -35,7 +35,7 @@
     var baselineimage = null;
     var lastframe = null;
     var tolerance = parseInt(document.querySelector('#tolerance').value);
-    document.querySelector('ccwc-video').addEventListener('frameupdate', function(event) {
+    document.querySelector('vshkr-video').addEventListener('frameupdate', function(event) {
         var data = event.detail;
         lastframe = data.framedata;
         if (baselineimage) {

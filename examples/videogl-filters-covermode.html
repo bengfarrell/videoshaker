@@ -3,10 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <title>Demo: Copy to Canvas</title>
-        <script type="module" src="../ccwc-glvideo.js"></script>
+        <script type="module" src="../vshkr-glvideo.js"></script>
 
         <style>
-            ccwc-glvideo {
+            vshkr-glvideo {
                 width: 250px;
                 height: 250px;
             }
@@ -18,11 +18,11 @@
         <p>
             Apply WebGL Filter - filling width and height of allotted area, cropping to size
         </p>
-        <ccwc-glvideo
+        <vshkr-glvideo
                 src="SampleVideo_360x240_1mb.mp4"
                 useCanvasForDisplay
                 videoScaleMode="cover"
                 canvasRefreshInterval="10" useWebGL='{"filter": "sobel_edge_detection"}'>
-        </ccwc-glvideo>
+        </vshkr-glvideo>
     </body>
 </html>

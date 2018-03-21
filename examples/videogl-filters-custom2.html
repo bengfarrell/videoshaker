@@ -3,10 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <title>Demo: Custom WebGL Filter</title>
-        <script type="module" src="../ccwc-glvideo.js"></script>
+        <script type="module" src="../vshkr-glvideo.js"></script>
 
         <style>
-            ccwc-glvideo {
+            vshkr-glvideo {
                 width: 640px;
                 height: 480px;
             }
@@ -18,16 +18,16 @@
         <p>
             Apply Custom WebGL Filter from the extras playground set
         </p>
-        <ccwc-glvideo
+        <vshkr-glvideo
                 useCamera
                 useCanvasForDisplay
                 canvasRefreshInterval="10"
                 useWebGL='{"filter": "sobel_inverted"}'>
-        </ccwc-glvideo>
+        </vshkr-glvideo>
 
         <script type="module">
             import Filters from '../src/webgl-extra/extra-shaders.js';
-            document.querySelector('ccwc-glvideo').webglProperties.filterLibrary = Filters;
+            document.querySelector('vshkr-glvideo').webglProperties.filterLibrary = Filters;
         </script>
     </body>
 </html>

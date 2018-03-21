@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>Demo: Take a snapshot and diff the Camera feed against it</title>
-    <script type="module" src="../ccwc-glvideo.js"></script>
+    <script type="module" src="../vshkr-glvideo.js"></script>
 
     <script id="2d-fragment-shader" type="x-shader/x-fragment">
         precision mediump float;
@@ -27,7 +27,7 @@
     </script>
 
     <style>
-        ccwc-glvideo {
+        vshkr-glvideo {
             width: 100px;
             height: 100px;
         }
@@ -41,14 +41,14 @@
 
     <input type="range" value="50" min="0" max="100" step="1" id="tolerance">
 
-    <ccwc-glvideo
+    <vshkr-glvideo
             src="SampleVideo_360x240_1mb.mp4"
             useWebGL='{"flipTextureY": true}'
             useCanvasForDisplay
             flipCanvas
             frameDataMode="imagedata"
             canvasRefreshInterval="50">
-    </ccwc-glvideo>
+    </vshkr-glvideo>
 
     <canvas id="target"></canvas>
 
@@ -61,7 +61,7 @@
 
         document.querySelector('button').addEventListener('click', captureStill);
         document.querySelector('button').addEventListener('input', onSliderChange);
-        var video = document.querySelector('ccwc-glvideo');
+        var video = document.querySelector('vshkr-glvideo');
         var ctx = document.querySelector('canvas#target').getContext('2d');
         video.webglProperties.vertexShader = Shaders.passthrough.vertex;
         video.webglProperties.fragmentShader = document.getElementById('2d-fragment-shader').text;

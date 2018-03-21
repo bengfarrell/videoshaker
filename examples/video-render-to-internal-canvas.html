@@ -3,10 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <title>Demo: Use Internal Canvas for Display</title>
-        <script type="module" src="../ccwc-video.js"></script>
+        <script type="module" src="../vshkr-video.js"></script>
 
         <style>
-            ccwc-video {
+            vshkr-video {
                 width: 250px;
                 height: 250px;
             }
@@ -18,10 +18,10 @@
         <p>
             Here we're watching not the actual video but the canvas. We've set the refresh interval to 250ms to make it super obvious
         </p>
-        <ccwc-video
+        <vshkr-video
                 src="SampleVideo_360x240_1mb.mp4"
                 canvasRefreshInterval="250"
                 useCanvasForDisplay>
-        </ccwc-video>
+        </vshkr-video>
     </body>
 </html>

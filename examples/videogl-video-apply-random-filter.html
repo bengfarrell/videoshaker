@@ -3,10 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>Demo: Apply Filter</title>
-    <script type="module" src="../ccwc-video.js"></script>
+    <script type="module" src="../vshkr-video.js"></script>
 
     <style>
-        ccwc-video {
+        vshkr-video {
             width: 250px;
             height: 250px;
         }
@@ -20,10 +20,10 @@
 <p>
     Apply a filter to the video
 </p>
-<ccwc-video
+<vshkr-video
         src="SampleVideo_360x240_1mb.mp4"
         canvasRefreshInterval="100">
-</ccwc-video>
+</vshkr-video>
 
 <script type="module">
     import Filter from '../src/webgl/filters.js';
@@ -32,7 +32,7 @@
     var canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
 
-    document.querySelector('ccwc-video').addEventListener('videoplaying', function(event) {
+    document.querySelector('vshkr-video').addEventListener('videoplaying', function(event) {
 
         // must set the width before getting the canvas context for proper sizing
         canvas.width = event.detail.videoWidth;
@@ -41,11 +41,11 @@
         var glProps = Filter.createRenderObject({
             gl: canvas.getContext('webgl'),
             filter: Filter.createFilterFromName(filters[parseInt(Math.random() * filters.length)]),
-            textures: [{name: 'video', texture: document.querySelector('ccwc-video').videoElement}]
+            textures: [{name: 'video', texture: document.querySelector('vshkr-video').videoElement}]
         });
 
 
-        document.querySelector('ccwc-video').addEventListener('frameupdate', function(event) {
+        document.querySelector('vshkr-video').addEventListener('frameupdate', function(event) {
             glProps.textures.update('video');
             glProps = Filter.render(glProps);
         });

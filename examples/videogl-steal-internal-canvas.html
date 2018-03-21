@@ -3,10 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <title>Demo: Steal Internal Canvas (WebGL)</title>
-        <script type="module" src="../ccwc-glvideo.js"></script>
+        <script type="module" src="../vshkr-glvideo.js"></script>
 
         <style>
-            ccwc-glvideo {
+            vshkr-glvideo {
                 width: 250px;
                 height: 250px;
             }
@@ -18,10 +18,10 @@
         <p>
             Instead of multiple canvas drawing, steal the video player's internal canvas context for ourselves outside of the component. Be sure you aren't using "useCanvasForDisplay" or the video element will be hidden
         </p>
-        <ccwc-glvideo
+        <vshkr-glvideo
                 src="SampleVideo_360x240_1mb.mp4"
                 canvasRefreshInterval="100" useWebGL>
-        </ccwc-glvideo>
+        </vshkr-glvideo>
 
         <canvas id="target"></canvas>
     </body>
@@ -30,11 +30,11 @@
         var mycanvas = document.querySelector('canvas#target');
         mycanvas.width = 300;
         mycanvas.height = 250;
-        var videoplayer = document.querySelector('ccwc-glvideo');
+        var videoplayer = document.querySelector('vshkr-glvideo');
         if (videoplayer.isReady) {
             videoplayer.canvasContext = mycanvas.getContext('webgl');
         } else {
-            document.querySelector('ccwc-glvideo').addEventListener('ready', function(event) {
+            document.querySelector('vshkr-glvideo').addEventListener('ready', function(event) {
                 videoplayer.canvasContext = mycanvas.getContext('webgl');
             });
         }

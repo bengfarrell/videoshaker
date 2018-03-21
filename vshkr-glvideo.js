@@ -1,8 +1,9 @@
-import CCWCVideo from './ccwc-video.js';
+import VideoShakerVideo from './vshkr-video.js';
 import Filters from './src/webgl/filters.js';
 import Shaders from './src/webgl/shaders.js';
+import Template from './src/componenttemplates.js';
 
-export default class CCWCGLVideo extends CCWCVideo {
+export default class VideoShakerGLVideo extends VideoShakerVideo {
     static get ON_WEBGL_SETUP() { return 'webglsetup'; }
     static get ON_VIDEO_PLAYING() { return 'videoplaying'; }
     static get ON_FRAME_UPDATE() { return 'frameupdate'; }
@@ -29,26 +30,7 @@ export default class CCWCGLVideo extends CCWCVideo {
          */
         this._useWebGL = false;
 
-        this.template = `
-                <style>
-                    ccwc-glvideo {
-                        display: inline-block;
-                        background-color: black;
-                        position: relative;
-                        overflow: hidden;
-                    }
-                    
-                    ccwc-glvideo > canvas {
-                        position: absolute;
-                    }
-                    
-                    ccwc-glvideo > video {
-                        position: absolute;
-                    }
-                </style>
-
-                <video autoplay="true"></video>
-                <canvas></canvas>`;
+        this.template = Template.html('vshkr-glvideo');
     };
 
     onResize() {
@@ -67,7 +49,7 @@ export default class CCWCGLVideo extends CCWCVideo {
         super.onPlaying();
         if (this._useWebGL) {
             this.webglProperties.renderobj = this.webglProperties.setupHandler.apply(this, [this.webglProperties]);
-            var event = new CustomEvent(CCWCGLVideo.ON_WEBGL_SETUP, { detail: { properties: this.webglProperties } });
+            var event = new CustomEvent(VideoShakerGLVideo.ON_WEBGL_SETUP, { detail: { properties: this.webglProperties } });
             this.dispatchEvent(event);
         }
     };
@@ -215,5 +197,5 @@ export default class CCWCGLVideo extends CCWCVideo {
     };
 }
 
-customElements.define('ccwc-glvideo', CCWCGLVideo );
+customElements.define('vshkr-glvideo', VideoShakerGLVideo );
 

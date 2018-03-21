@@ -3,10 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <title>Demo: Steal Internal Canvas</title>
-        <script type="module" src="../ccwc-video.js"></script>
+        <script type="module" src="../vshkr-video.js"></script>
 
         <style>
-            ccwc-video {
+            vshkr-video {
                 width: 250px;
                 height: 250px;
             }
@@ -18,25 +18,25 @@
         <p>
             Instead of multiple canvas drawing, steal the video player's internal canvas context for ourselves outside of the component. Be sure you aren't using "useCanvasForDisplay" or the video element will be hidden
         </p>
-        <ccwc-video
+        <vshkr-video
                 src="SampleVideo_360x240_1mb.mp4"
                 canvasRefreshInterval="100"
                 frameDataMode="imagedata">
-        </ccwc-video>
+        </vshkr-video>
 
         <canvas id="target"></canvas>
     </body>
 
     <script>
         var mycanvas = document.querySelector('canvas#target');
-        var videoplayer = document.querySelector('ccwc-video');
+        var videoplayer = document.querySelector('vshkr-video');
         if (videoplayer.isReady) {
             // size canvas before getting context, otherwise it'll blow up the pixels weird
             mycanvas.width = 300;
             mycanvas.height = 300;
             videoplayer.canvasContext = mycanvas.getContext('2d');
         } else {
-            document.querySelector('ccwc-video').addEventListener('ready', function(event) {
+            document.querySelector('vshkr-video').addEventListener('ready', function(event) {
                 // size canvas before getting context, otherwise it'll blow up the pixels weird
                 mycanvas.width = 300;
                 mycanvas.height = 300;

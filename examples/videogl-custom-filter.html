@@ -3,10 +3,10 @@
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <title>Demo: Custom WebGL Filter</title>
-        <script type="module" src="../ccwc-glvideo.js"></script>
+        <script type="module" src="../vshkr-glvideo.js"></script>
 
         <style>
-            ccwc-glvideo {
+            vshkr-glvideo {
                 width: 250px;
                 height: 250px;
             }
@@ -46,18 +46,18 @@
         <p>
             Apply Custom WebGL Filter
         </p>
-        <ccwc-glvideo
+        <vshkr-glvideo
                 src="SampleVideo_360x240_1mb.mp4"
                 useCanvasForDisplay
                 canvasRefreshInterval="100"
                 useWebGL>
-        </ccwc-glvideo>
+        </vshkr-glvideo>
 
         <script type="module">
-            import CCWCGLVideo from '../ccwc-glvideo.js';
+            import vshkrGLVideo from '../vshkr-glvideo.js';
 
-            document.querySelector('ccwc-glvideo').webglProperties.vertexShader = document.getElementById('2d-vertex-shader').text;
-            document.querySelector('ccwc-glvideo').webglProperties.fragmentShader = document.getElementById('2d-fragment-shader').text;
+            document.querySelector('vshkr-glvideo').webglProperties.vertexShader = document.getElementById('2d-vertex-shader').text;
+            document.querySelector('vshkr-glvideo').webglProperties.fragmentShader = document.getElementById('2d-fragment-shader').text;
         </script>
     </body>
 </html>

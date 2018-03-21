@@ -1,8 +1,10 @@
+import Template from './src/componenttemplates.js';
+
 /**
- * CCWCVideo supports both video files and camera feeds
+ * VideoShakerVideo supports both video files and camera feeds
  * Blit your video to a canvas, get frame data, scale the frame/canvas output, and render video to an external canvas of your choosing
  */
-export default class CCWCVideo extends HTMLElement {
+export default class VideoShakerVideo extends HTMLElement {
 
     static get ON_VIDEO_PLAYING() { return 'videoplaying'; }
     static get ON_FRAME_UPDATE() { return 'frameupdate'; }
@@ -186,26 +188,7 @@ export default class CCWCVideo extends HTMLElement {
          */
         this.visibleVideoRect = { x: 0, y: 0, width: 0, height: 0 };
 
-        this.template = `
-                <style>
-                    ccwc-video {
-                        display: inline-block;
-                        background-color: black;
-                        position: relative;
-                        overflow: hidden;
-                    }
-                    
-                    ccwc-video > canvas {
-                        position: absolute;
-                    }
-                    
-                    ccwc-video > video {
-                        position: absolute;
-                    }
-                </style>
-
-                <video autoplay="true"></video>
-                <canvas></canvas>`;
+        this.template = Template.html('vshkr-video');
     }
 
     /**
@@ -213,7 +196,7 @@ export default class CCWCVideo extends HTMLElement {
      */
     onPlaying() {
         this.isPlaying = true;
-        var event = new CustomEvent(CCWCVideo.ON_VIDEO_PLAYING, {
+        var event = new CustomEvent(VideoShakerVideo.ON_VIDEO_PLAYING, {
             detail: {
                 source: this.source,
                 videoElement: this.videoElement,
@@ -564,7 +547,7 @@ export default class CCWCVideo extends HTMLElement {
             this.tick = setInterval(() => {
                 if (this.width === 0 || this.height === 0) { return; }
                 if (!this.isPlaying) { return; }
-                var event = new CustomEvent(CCWCVideo.ON_FRAME_UPDATE, { detail: {
+                var event = new CustomEvent(VideoShakerVideo.ON_FRAME_UPDATE, { detail: {
                     framedata: this.getCurrentFrameData(),
                     canvascontext: this.canvasctx,
                     visibleVideoRect: this.visibleVideoRect,
@@ -580,7 +563,7 @@ export default class CCWCVideo extends HTMLElement {
         }
 
         this.isReady = true;
-        var event = new CustomEvent(CCWCVideo.ON_READY);
+        var event = new CustomEvent(VideoShakerVideo.ON_READY);
         this.dispatchEvent(event);
     };
 
@@ -589,6 +572,6 @@ export default class CCWCVideo extends HTMLElement {
     adoptedCallback(oldDocument, newDocument) {}
 }
 
-if (!customElements.get('ccwc-video')) {
-    customElements.define('ccwc-video', CCWCVideo);
+if (!customElements.get('vshkr-video')) {
+    customElements.define('vshkr-video', VideoShakerVideo);
 }
